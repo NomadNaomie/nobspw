@@ -1,9 +1,9 @@
-require_relative '../../../lib/nobspw'
+require_relative '../../../lib/nobspw_rails7'
 require 'securerandom'
 
-RSpec.describe NOBSPW::PasswordChecker do
+RSpec.describe NOBSPW_RAILS7::PasswordChecker do
   let(:pc) do
-    NOBSPW::PasswordChecker.new password: password,
+    NOBSPW_RAILS7::PasswordChecker.new password: password,
                                 name: name,
                                 username: username,
                                 email: email
@@ -36,7 +36,7 @@ RSpec.describe NOBSPW::PasswordChecker do
 
     context 'password is too short' do
       let(:password) do
-        length = NOBSPW.configuration.min_password_length - 1
+        length = NOBSPW_RAILS7.configuration.min_password_length - 1
         rand(36**length).to_s(36)
       end
 
@@ -48,7 +48,7 @@ RSpec.describe NOBSPW::PasswordChecker do
 
     context 'password is too long' do
       let(:password) do
-        length = NOBSPW.configuration.max_password_length + 1
+        length = NOBSPW_RAILS7.configuration.max_password_length + 1
         SecureRandom.alphanumeric(length)
       end
 
@@ -151,7 +151,7 @@ RSpec.describe NOBSPW::PasswordChecker do
 
     context 'password is blacklisted' do
       before(:each) do
-        NOBSPW.configure do |config|
+        NOBSPW_RAILS7.configure do |config|
           config.blacklist = ['thispasswordisblacklisted', /middle/i]
         end
       end
@@ -187,7 +187,7 @@ RSpec.describe NOBSPW::PasswordChecker do
 
       context 'use Ruby grep' do
         before {
-          NOBSPW.configure do |config|
+          NOBSPW_RAILS7.configure do |config|
             config.use_ruby_grep = true
           end
         }

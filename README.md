@@ -1,8 +1,8 @@
-# NOBSPW - No Bullshit Password strength checker
+# NOBSPW_RAILS7 - No Bullshit Password strength checker
 
-[![Build Status](https://travis-ci.org/cmer/nobspw.svg?branch=master)](https://travis-ci.org/cmer/nobspw)
+[![Build Status](https://travis-ci.org/cmer/nobspw_rails7.svg?branch=master)](https://travis-ci.org/cmer/nobspw_rails7)
 
-NOBSPW is simple, no non-sense password strength checker written in Ruby. It does NOT validate against [bullshit password rules](https://twitter.com/codinghorror/status/631238409269309440?ref_src=twsrc%5Etfw) such as:
+NOBSPW_RAILS7 is simple, no non-sense password strength checker written in Ruby. It does NOT validate against [bullshit password rules](https://twitter.com/codinghorror/status/631238409269309440?ref_src=twsrc%5Etfw) such as:
 
 - must contain uppercase _(bullshit!)_
 - must contain lowercase _(bullshit!)_
@@ -25,7 +25,7 @@ This software was inspired by [Password Rules are Bullshit](https://blog.codingh
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'nobspw'
+gem 'nobspw_rails7'
 ```
 
 And then execute:
@@ -34,14 +34,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install nobspw
+    $ gem install nobspw_rails7
 
 ## Usage
 
 ### Vanilla Ruby
 
 ```ruby
-  pwc = NOBSPW::PasswordChecker.new password: 'mystrongpassword',
+  pwc = NOBSPW_RAILS7::PasswordChecker.new password: 'mystrongpassword',
                                     name: 'John Smith',           # optional but recommended
                                     username: 'bigjohn43',        # optional but recommended
                                     email: 'john@example.org'     # optional but recommended
@@ -54,7 +54,7 @@ Or install it yourself as:
 Optionally, you can configure some options:
 
 ```ruby
-  NOBSPW.configure do |config|
+  NOBSPW_RAILS7.configure do |config|
     config.min_password_length = 10
     config.max_password_length = 256
     config.min_unique_characters = 5
@@ -90,7 +90,7 @@ validates :password, password: { :name => :customer_name,
 
 ## Validations
 
-NOBSPW currently validates for the following, in this order:
+NOBSPW_RAILS7 currently validates for the following, in this order:
 
 ```ruby
 password_empty?
@@ -113,7 +113,7 @@ It is possible and easy to add your own validations, or remove default ones.
 ### Adding a custom validation
 
 ```ruby
-module NOBSPW::ValidationMethods
+module NOBSPW_RAILS7::ValidationMethods
   def contains_letter_a?
     # This is obviously a silly validation. Don't do this!
     # If method returns true, it means that it FAILED validation.
@@ -122,7 +122,7 @@ module NOBSPW::ValidationMethods
   end
 end
 
-NOBSPW.configuration.validation_methods << :contains_letter_a?
+NOBSPW_RAILS7.configuration.validation_methods << :contains_letter_a?
 
 # if using the Rails validator, you also need to define the error message:
 ActiveModel::Validations::PasswordValidator.error_messages[:contains_letter_a] = \
@@ -133,7 +133,7 @@ ActiveModel::Validations::PasswordValidator.error_messages[:contains_letter_a] =
 ### Removing a built-in validation
 
 ```ruby
-NOBSPW.configuration.validation_methods.delete(:domain_included_in_password?)
+NOBSPW_RAILS7.configuration.validation_methods.delete(:domain_included_in_password?)
 ```
 
 ### Localization

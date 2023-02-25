@@ -13,7 +13,7 @@ class ActiveModel::Validations::PasswordValidator < ActiveModel::EachValidator
   }
 
   def validate_each(record, attribute, value)
-    pc = NOBSPW::PasswordChecker.new password: record.send(attribute),
+    pc = NOBSPW_RAILS7::PasswordChecker.new password: record.send(attribute),
                                      email:    email_value(record),
                                      name:     name_value(record),
                                      username: username_value(record)

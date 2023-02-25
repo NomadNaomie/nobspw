@@ -1,8 +1,8 @@
 require 'shellwords'
 
-module NOBSPW
+module NOBSPW_RAILS7
   class PasswordChecker
-    include NOBSPW::ValidationMethods
+    include NOBSPW_RAILS7::ValidationMethods
 
     def initialize(name: nil, username: nil, email: nil, password:)
       @name, @username, @email, @password = \
@@ -28,10 +28,10 @@ module NOBSPW
 
     def check_password
       @weak_password_reasons = []
-      NOBSPW.configuration.validation_methods.each do |method|
+      NOBSPW_RAILS7.configuration.validation_methods.each do |method|
         if send("#{method}")
           @weak_password_reasons << method.to_s.sub(/\?$/, '').to_sym
-          break if NOBSPW.configuration.interrupt_validation_for.include?(method)
+          break if NOBSPW_RAILS7.configuration.interrupt_validation_for.include?(method)
         end
       end
 

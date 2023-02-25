@@ -1,4 +1,4 @@
-module NOBSPW
+module NOBSPW_RAILS7
   class Configuration
     attr_accessor :min_password_length
     attr_accessor :max_password_length
@@ -20,8 +20,8 @@ module NOBSPW
       @use_ruby_grep            = @grep_path.empty?
       @domain_name              = nil
       @blacklist                = nil
-      @validation_methods       = NOBSPW::ValidationMethods::DEFAULT_VALIDATION_METHODS
-      @interrupt_validation_for = NOBSPW::ValidationMethods::INTERRUPT_VALIDATION_FOR
+      @validation_methods       = NOBSPW_RAILS7::ValidationMethods::DEFAULT_VALIDATION_METHODS
+      @interrupt_validation_for = NOBSPW_RAILS7::ValidationMethods::INTERRUPT_VALIDATION_FOR
     end
   end
 end

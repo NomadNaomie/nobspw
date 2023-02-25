@@ -1,9 +1,9 @@
-require_relative '../../../../lib/nobspw'
+require_relative '../../../../lib/nobspw_rails7'
 require_relative '../../../helpers/models/user'
 
 RSpec.describe ActiveModel::Validations::PasswordValidator do
   before(:each) {
-    NOBSPW.configure do |config|
+    NOBSPW_RAILS7.configure do |config|
       config.domain_name = 'example.org'
       config.blacklist = %w(thispasswordisblacklisted)
     end

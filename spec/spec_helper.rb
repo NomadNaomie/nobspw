@@ -3,7 +3,7 @@ require "pry"
 require "simplecov"
 require 'active_model'
 require 'i18n'
-require "nobspw"
+require "nobspw_rails7"
 
 SimpleCov.start do
   coverage_dir 'spec/reports'
@@ -21,12 +21,12 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    NOBSPW.configure do |config|
+    NOBSPW_RAILS7.configure do |config|
       config.use_ruby_grep = true
     end
   end
 
   config.after(:each) do
-    NOBSPW.configuration = nil
+    NOBSPW_RAILS7.configuration = nil
   end
 end

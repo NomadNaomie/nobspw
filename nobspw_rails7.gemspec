@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'nobspw/version'
+require 'nobspw_rails7/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "nobspw"
-  spec.version       = NOBSPW::VERSION
-  spec.authors       = ["Carl Mercier"]
-  spec.email         = ["foss@carlmercier.com"]
+  spec.name          = "nobspw_rails7"
+  spec.version       = NOBSPW_RAILS7::VERSION
+  spec.authors       = ["Carl Mercier", "Nao"]
+  spec.email         = ["foss@carlmercier.com", "nao@naomie.digital"]
 
   spec.summary       = %q{No Bullshit Password strength checker}
-  spec.description   = %q{No Bullshit Password strength checker. Inspired by "Password Rules are Bullshit" by Jeff Atwood. https://blog.codinghorror.com/password-rules-are-bullshit/}
-  spec.homepage      = "https://github.com/cmer/nobspw"
+  spec.description   = %q{No Bullshit Password strength checker. Inspired by "Password Rules are Bullshit" by Jeff Atwood. https://blog.codinghorror.com/password-rules-are-bullshit/ (Fixed to work with Rails 7)}
+  spec.homepage      = "https://github.com/nomadnaomie/nobspw"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
